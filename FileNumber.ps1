@@ -1,1 +1,1 @@
-(Get-ChildItem -Recurse -File| Measure-Object).Count
+(Get-ChildItem 'C:\PKI Service\MyJanusFolder\Application' -Recurse -File| Measure-Object).Count
