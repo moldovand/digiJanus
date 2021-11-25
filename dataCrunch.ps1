@@ -5,20 +5,27 @@ Write-Host $files
 $errors = "65","66","119","122","271","313","sumMove"
 Write-Host $errors
 
-$excel = New-Object -ComObject excel.application 
+$excel = New-Object -ComObject excel.application
 $excel.visible = $False
 $workbook = $excel.Workbooks.Add()
-$wksht= $workbook.Worksheets.Item(1) 
+$wksht= $workbook.Worksheets.Item(1)
 $wksht.Name = 'Compiled Errors'
 
 $wksht.Cells.Item(1,1) = 'Instrument'
-$wksht.Cells.Item(1,2) = '65' 
-$wksht.Cells.Item(1,3) = '66' 
+$wksht.Cells.Item(1,2) = '65'
+$wksht.Cells.Item(1,3) = '66'
 $wksht.Cells.Item(1,4) = '119'
-$wksht.Cells.Item(1,5) = '122' 
-$wksht.Cells.Item(1,6) = '271' 
+$wksht.Cells.Item(1,5) = '122'
+$wksht.Cells.Item(1,6) = '271'
 $wksht.Cells.Item(1,7) = '313'
 $wksht.Cells.Item(1,8) = 'sumMove'
+# TO DO: implement the automatic generation of Weighted values and Median
+# $wksht.Cells.Item(1,9) = '66_Weight'
+# $wksht.Cells.Item(1,10) = '66_Med'
+# $wksht.Cells.Item(1,11) = '122_Weight'
+# $wksht.Cells.Item(1,12) = '122_Med'
+# $wksht.Cells.Item(1,13) = '313_Weight'
+# $wksht.Cells.Item(1,14) = '313_Med'
 # counter for instrument number
 $i = 2
 # counter for error number
@@ -32,15 +39,15 @@ $outputpath = $name1 + 'LB_HF.csv'
 foreach ($file in $files)
 {
     $path = $file
-	# verbose mode 
+	# verbose mode
 	Write-Host $path
-    
+
 	# get the folder name
 	# \\10.90.1.9\Janus_PE\PerkinElmer\databases\Janus-17227
 	# $hostname = $path.Replace('.csv','')
 	$hostname = $path
 	$serverpath = '\\10.90.1.9\Janus_PE\PerkinElmer\databases\' + $hostname
-	
+
 	# get the number of the instrument
 	$name = $path -Replace "JANUS-",""
     # $name_new = $name.Replace('.csv','')
@@ -62,10 +69,10 @@ foreach ($file in $files)
         # count the number of specific errors
         $ErrorValue = $A.$error
         Write-Host $ErrorValue
-		
+
 		# verbose mode
 		# "Number of errors {$error}: $ErrorSum"
-        
+
         # save the value in the Excel file
         $wksht.Cells.Item($i,$j) = $ErrorValue
         $j++
@@ -78,7 +85,7 @@ foreach ($file in $files)
 
 # Move-Item $CSV_file2 -Destination $serverpath -Force
 
-$workbook.SaveAs($outputpath,[Microsoft.Office.Interop.Excel.XlFileFormat]::xlCSVWindows) 
+$workbook.SaveAs($outputpath,[Microsoft.Office.Interop.Excel.XlFileFormat]::xlCSVWindows)
 $excel.Quit()
 
 # Move-Item $outfile -Destination $serverpath -Force
