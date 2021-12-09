@@ -43,7 +43,7 @@ function ExportQuery {
 }
 
 # Look inside the "/database" folder for MDB files
-$mdbfiles = Get-ChildItem ( $localdbpath + '\*.mdb') -Recurse
+$mdbfiles = Get-ChildItem ( $localdbpath + '\*_17220.mdb') -Recurse
 $header = $true
 
 # Run the two queries on each MDB that is greater than 10MB 
