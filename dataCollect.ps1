@@ -23,6 +23,7 @@ New-item -Path $serverpath -ItemType Directory -Force                           
 
 # Query for extracting AllErrors / AllMovements
 #mamamia
+#mamamia 2
 function ExportQuery {
     param( [string]$dbpath,
            [bool]$header,
