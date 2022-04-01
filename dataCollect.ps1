@@ -22,6 +22,7 @@ $outputpath = (Join-Path -Path $localdbpath -ChildPath ($hostname + '_SF.csv'))
 New-item -Path $serverpath -ItemType Directory -Force                                          # create folder on server foreach Janus
 
 # Query for extracting AllErrors / AllMovements
+#mamamia
 function ExportQuery {
     param( [string]$dbpath,
            [bool]$header,
