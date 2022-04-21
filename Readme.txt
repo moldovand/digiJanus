@@ -1,11 +1,14 @@
-08.12.2021
-I need to be able to select the data based on the number of movements.
-To Do:
-- how do I select that first (in DB).
-- how do I add it as a querry.
+21st of April 2021:
+- Short MSL example protocol that uses vbscript to query a database directly using SQL.
+- The vbscript has arguements for the database, query and result file.
 
-13.12.2021
-- How to do the querry for number of movements / select the number of movements. 
-- What is the strategy here: 
-1. Extract the number of needed movements. Maybe I can find a correlation with the number of days.
-2. 
+Note: 
+- vbscript has to run using 32bit script host.
+- this vbscript was setup to connect to an MS Access database and used the provider supplied by microsoft.
+- installed using the AccessDatabaseEngine.exe
+- if MS Access is already installed then need to install this using the command line with quiet flag to suppress errors
+ie
+C:\AccessDatabaseEngine.exe /quiet
+
+Note:
+- the Example queries the Multiprobe.mdb database
